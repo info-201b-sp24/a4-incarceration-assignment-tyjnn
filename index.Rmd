@@ -7,6 +7,7 @@ output: html_document
 source("summary.R")
 
 # load charts
+source("chart1.R")
 ```
 
 ### Introduction
@@ -44,33 +45,52 @@ Americans were incarcerated in the same year.
 
 ### The Dataset
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
-
+This dataset was originally collected by the Vera Institute, and then broken
+into smaller files for ease of use in this assignment by Melanie Walsh of UW’s
+iSchool. Vera collected this data by using a combination of federal and state
+department reports to average the daily amount of prisoners, disaggregated by
+race, across each county for an annual report of jail population. Prison
+population data was collected from these reports as the number of prisoners at
+the end of the year. These results were compiled using sources such as the NCRP,
+DCRP, ASJ, COJ, CAF, UCR, CDC, USDA, and U.S. Census. This data was collected,
+according to Vera, “to build and create justice systems that ensure fairness,
+promote safety, and strengthen communities.” The complete dataset provided by
+Vera contains 153,811 observations and 121 features, while the smaller subsets
+used in the assignment have 36 and 28 observations for the prison and jail
+datasets respectively. One of the main ethical questions that must be considered
+when working with this data is ‘what were the circumstances and reasons behind
+the incarceration of the individuals within these racial groups,’ as the data
+only shows the population incarcerated as a number, not any of the events,
+policies, or context behind each person’s incarceration. This doubles as one
+of the dataset’s main limitations: it lacks context surrounding the reason of
+incarceration. Without this vital information, it is easy to jump to conclusions
+about trends in the data, but lacking knowledge of the full circumstances behind
+the data, it is impossible to know the full story from this dataset alone.
+Another major limitation of the data is the large amount of unknown values,
+especially in earlier years, making it difficult to derive any meaningful
+observations about the missing populations during those times.
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-```{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, message = FALSE}
+chart1
 ```
+
+This chart displays the percentage of each racial group studied that was
+incarcerated between the years 1990 and 2016. Its purpose is to showcase the
+discrepancy between the groups, as well as trends within each group as time
+passes. For example, Black Americans have a significantly higher percentage of
+their population incarcerated across nearly all of the years studied compared to
+other groups, while Asian Americans, Pacific Islanders, and White Americans
+consistently have a much lower percentage. The chart also effectively displays
+major changes in percentage of the populations incarcerated, such as the jumps
+in 1992 and falls in 1995 in for Native and Latino populations, or the spike in
+1998 for all populations except Latinos. Observing these trends could help link
+historical policies or events to their effects on specific racial groups, and
+uncover potentially discriminatory and unjust effects not initially apparent.
+Overall, the chart shows a general increase in incarcerated populations around
+1992, and a decrease beginning after 1998, with much variability in the years
+between for most racial groups.
 
 ### Variable Comparison Chart
 
