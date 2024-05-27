@@ -8,6 +8,8 @@ source("summary.R")
 
 # load charts
 source("chart1.R")
+source("chart2.R")
+source("map.R")
 ```
 
 ### Introduction
@@ -94,21 +96,39 @@ between for most racial groups.
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r, echo = FALSE, message = FALSE}
+chart2
+```
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+This chart shows how the percentage of Black Americans in the total population
+relates to the percentage they make up in the incarcerated population of the
+same location. Its purpose is to check if Black Americans are being incarcerated
+at a level proportional to their share of the population. If this were the case,
+the expected visual would have the dots fall on or around a diagonal line where
+the percent of the total population is about the same as the percent of the
+incarcerated population, displayed above for reference. From the graph, however,
+this is clearly not the case, as the vast majority of the dots fall above the
+line indicating that they are being incarcerated at a rate disproportional to
+the percentage of the total population that they make up. This further supports
+the previous results indicating that the United States prison systems could be
+discriminating Black Americans, as they are consistently over represented within
+the incarcerated populations.
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r, echo = FALSE, message = FALSE}
+map
+```
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
-
+This map shows which racial group makes up the largest percentage of the
+incarcerated population in each county. The purpose of it is to examine if there
+are any geographical trends that might suggest discrimination in certain areas.
+The results shown indicate that the majority of the United States counties have
+White Americans making up most of their incarcerated populations, however there
+are some interesting exceptions towards the bottom of the map. Here we can see
+that in the southeast section of America, there is a large amount of counties
+with Black Americans making up the majority of their incarcerated population,
+and in the southwest there is a large percentage made up by Latinos. While this
+could just have to do with populations of those groups in those areas, it could
+also be a reminder of the conflict and discrimination against those groups in
+the United State's history.

@@ -6,8 +6,8 @@ library(ggplot2)
 pp_cs <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/blob/main/us-prison-pop.csv?raw=true")
 jp_cs <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/blob/main/us-jail-pop.csv?raw=true")
 
-# create main data frame of populations with most complete data
-inc <- left_join(pp_cs, jp_cs) %>%
+# create data frame of populations with most complete data
+inc_data <- left_join(pp_cs, jp_cs) %>%
   na.omit() %>%
   group_by(year) %>%
   summarise(
@@ -18,7 +18,7 @@ inc <- left_join(pp_cs, jp_cs) %>%
     white = sum(white_prison_pop + white_jail_pop) / sum(white_pop_15to64)
   )
 
-chart1 <- inc %>%
+chart1 <- inc_data %>%
   ggplot(aes(year)) +
   geom_line(aes(y = aapi, colour = "Asian or\nPacific Islander")) +
   geom_line(aes(y = black, colour = "Black")) +

@@ -6,7 +6,7 @@ pp_cs <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/blob/main/us-pr
 jp_cs <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/blob/main/us-jail-pop.csv?raw=true")
 
 # create main data frame of populations with most complete data
-data <- left_join(pp_cs, jp_cs) %>%
+sum_data <- left_join(pp_cs, jp_cs) %>%
   na.omit() %>%
   group_by(year) %>%
   summarise(
@@ -25,10 +25,10 @@ data <- left_join(pp_cs, jp_cs) %>%
   )
 
 # store most recent year in data for easy access
-rct_yr <- data %>% filter(year == max(year)) %>% pull(year)
+rct_yr <- sum_data %>% filter(year == max(year)) %>% pull(year)
 
 # get percent of each race's population and of total population incarcerated
-recent_inc_pct <- data %>%
+recent_inc_pct <- sum_data %>%
   filter(year == rct_yr) %>%
   summarize(
     total_pct = total_inc / total_pop,
@@ -64,7 +64,7 @@ max_pct <- recent_inc_pct %>%  # black
 
 
 # get percentage of total population made up by each race (most recent year)
-recent_pop_pct <- data %>%
+recent_pop_pct <- sum_data %>%
   filter(year == rct_yr) %>%
   summarise(across(3:7, ~ . / total_pop))
 
@@ -82,7 +82,7 @@ black_inc_pct <- recent_inc_pct %>%
 
 
 # find year of highest incarceration per race
-max_year <- data %>%
+max_year <- sum_data %>%
   reframe(across(9:13, \(x)(filter(., x == max(x)) %>% select(year) %>% pull())))
 
 
@@ -92,14 +92,14 @@ max_black_yr <- max_year %>%
 
 
 # VALUE 5.1: MOST BLACK AMERICANS INCARCERATED IN A YEAR
-max_black_inc <- data %>%
+max_black_inc <- sum_data %>%
   filter(year == max_black_yr) %>%
   pull(black_inc) %>%
   round() %>%
   format(scientific = FALSE)
 
 # VALUE 5.2: WHITE INCARCERATED POPULATION SAME YEAR
-white_inc_same_yr <- data %>%
+white_inc_same_yr <- sum_data %>%
   filter(year == max_black_yr) %>%
   pull(white_inc) %>%
   round() %>%
