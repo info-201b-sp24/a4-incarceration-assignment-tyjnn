@@ -2,22 +2,45 @@
 title: "A3: Incarceration"
 output: html_document
 ---
+```{r setup, include=FALSE}
+# load summary values
+source("summary.R")
+
+# load charts
+```
 
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+Racism in the United States has continued to exist since its creation,
+surviving far past the end of slavery, segregation, and countless other forms of
+discrimination, all of which promised to bring an end to the issue. In the
+modern day, this act of injustice manifests itself quite notably within our
+prison system, excused as an essential means of upholding a "just" society. In
+order to more closely examine and analyze this issue, this page intends to use
+the *Incarceration Trends Dataset* to compare the populations of various races
+to the incarcerated populations of the same races in order to identify
+inequality in the proportion of incarcerated individuals between these groups.
+It will also look at how these variables change over time to identify any
+historical trends, as well as how they relate to geographical regions to see if
+location plays any significant role in the discriminatory incarceration within
+the United States.
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
+Looking into the most complete recent year in the dataset, `r rct_yr`, it was
+found that the total percentage of the study population that was incarcerated
+was `r total_pct`%, however this wasn't spread proportionately across the five
+studied racial groups: Asian American / Pacific Islander, Black, Latinx, Native
+American, and White. Rather, Asian Americans / Pacific Islanders had the lowest
+ratio, falling significantly below the expected incarceration rate with only
+`r min_pct`% of the population being incarcerated, while Black Americans were
+imprisoned at the highest rate, well above their expected proportion sitting at
+`r max_pct`%. In other words, Black Americans make up only `r black_pop_pct`% of
+the total population, yet `r black_inc_pct`% of the incarcerated population.
+`r rct_yr` wasn't even the peak of their imprisonment though, that being
+`r rct_yr - max_black_yr` years ago in `r max_black_yr` where `r max_black_inc`
+Black Americans sat jailed or imprisoned while only `r white_inc_same_yr` White
+Americans were incarcerated in the same year.
 
 ### The Dataset
 
@@ -46,7 +69,7 @@ When we say "clear" or "human readable" titles and labels, that means that you s
 
 Here's an example of how to run an R script inside an RMarkdown file:
 
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, code = readLines("chart1_example.R")}
 ```
 
 ### Variable Comparison Chart
